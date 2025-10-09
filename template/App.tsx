@@ -5,6 +5,7 @@
  * @format
  */
 
+import { UIText } from '@/components/common';
 import React from 'react';
 import type { PropsWithChildren } from 'react';
 import {
@@ -102,6 +103,7 @@ function App(): React.JSX.Element {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
+          <UIText>hehehehe</UIText>
         </View>
       </ScrollView>
     </View>
