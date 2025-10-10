@@ -6,6 +6,7 @@ const LoginScreen = () => {
   const onLogin = () => {
     reset(ScreenName.BottomTab);
   };
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <TouchableOpacity onPress={onLogin}>
