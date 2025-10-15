@@ -8,9 +8,9 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View className="flex-1 items-center justify-center bg-background">
       <TouchableOpacity onPress={onLogin}>
-        <Text>Login</Text>
+        <Text className="text-textColor">Login</Text>
       </TouchableOpacity>
     </View>
   );

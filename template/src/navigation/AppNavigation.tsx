@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import { LoginScreen } from '@/screens';
 import { NavStackParams, ScreenName } from './AppNavigation.types';
-import BottomTabNavigator from './BottomTab/BottomTabNavigator';
+import BottomTabNavigator from './bottom-tab/BottomTabNavigator';
 
 export const navigationRef = React.createRef<NavigationContainerRef<NavStackParams>>();
 
