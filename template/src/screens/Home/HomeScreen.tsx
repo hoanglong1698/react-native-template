@@ -22,9 +22,9 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View className="flex-1 items-center justify-center bg-background">
       <TouchableOpacity onPress={onPress}>
-        <Text>HomeScreen</Text>
+        <Text className="text-textColor">HomeScreen</Text>
       </TouchableOpacity>
     </View>
   );

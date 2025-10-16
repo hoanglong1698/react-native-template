@@ -18,7 +18,7 @@ export const DarkColors = {
   ...CommonColors,
   primary: '#857CD9',
   secondary: '#A5A5C0',
-  background: '#9A2A45',
+  background: '#2A2A45',
   outstand: '#552288',
   textColor: '#FFFFFF',
 };
