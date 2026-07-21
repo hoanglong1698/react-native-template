@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { navigate, ScreenName } from '@/navigation';
+import { Header } from '@/components/common';
 
 const HomeScreen = () => {
   const onPress = () => {
@@ -8,10 +9,13 @@ const HomeScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <TouchableOpacity onPress={onPress}>
-        <Text>HomeScreen</Text>
-      </TouchableOpacity>
+    <View className="flex-1 bg-background">
+      <Header title="Home" />
+      <View className="p-5">
+        <TouchableOpacity onPress={onPress}>
+          <Text className="text-textColor">Go to profile</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
