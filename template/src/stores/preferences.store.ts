@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist, StateStorage } from 'zustand/middleware';
 import { mmkvStorage } from '@/services/mmkv/mmkv.service';
 import { LanguageVariant, StorageKeys, ThemesVariant } from '@/constants';
+import i18n from '@/i18n';
 
 export interface AppPreferencesState {
   theme: ThemesVariant;
@@ -29,11 +30,20 @@ export const useAppPreferences = create<AppPreferencesState>()(
       theme: ThemesVariant.LIGHT,
       language: LanguageVariant.EN,
       setTheme: (theme: ThemesVariant) => set({ theme }),
-      setLanguage: (language: string) => set({ language }),
+      setLanguage: (language: string) => {
+        i18n.changeLanguage(language);
+        set({ language });
+      },
     }),
     {
       name: StorageKeys.APP_PREFERENCES,
       storage: createJSONStorage(() => zustandStorage),
+      onRehydrateStorage: () => (state) => {
+        if (state?.language) {
+          i18n.changeLanguage(state.language);
+        }
+      },
     },
   ),
 );
+
