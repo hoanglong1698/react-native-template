@@ -1,10 +1,10 @@
-import { ThemeContext } from '@/contexts';
-import { useContext } from 'react';
+import { useAppPreferences } from '@/stores';
+import { DarkColors, LightColors, ThemesVariant } from '@/constants';
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
+  const theme = useAppPreferences(state => state.theme);
+  const setTheme = useAppPreferences(state => state.setTheme);
+  const colors = theme === ThemesVariant.DARK ? DarkColors : LightColors;
+
+  return { theme, setTheme, colors };
 };

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ColorsType } from '@/contexts';
+import { ColorsType } from '@/constants';
 import { useThemedStyles } from '@/hooks';
 
 interface Props {

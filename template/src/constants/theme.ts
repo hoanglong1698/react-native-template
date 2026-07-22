@@ -1,5 +1,10 @@
 import { vars } from 'nativewind';
 
+export enum ThemesVariant {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
+
 export const CommonColors = {
   buttercup: '#F0B90B',
   carouselPink: '#FAE4E8',

@@ -3,13 +3,15 @@ import { navigationRef } from './AppNavigation';
 import { NavStackParams } from './AppNavigation.types';
 
 // Navigate to a route
-export function navigate<RouteName extends keyof NavStackParams>(name: RouteName, params?: NavStackParams[RouteName]) {
-  navigationRef.current?.dispatch(
-    CommonActions.navigate({
-      name: name as string,
-      params: params as object | undefined,
-    }),
-  );
+export function navigate<RouteName extends keyof NavStackParams>(
+  name: RouteName,
+  params?: NavStackParams[RouteName],
+  options?: {
+    merge?: boolean;
+    pop?: boolean;
+  },
+) {
+  navigationRef.current?.dispatch(CommonActions.navigate(name, params, options));
 }
 
 // Reset navigation state to a single route
