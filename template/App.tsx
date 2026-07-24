@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { StatusBar, View } from 'react-native';
 import { AppNavigation } from '@/navigation';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useAppPreferences, useAuthStore } from '@/stores';
 import { ColorPalette, ThemesVariant } from '@/constants';
@@ -24,7 +25,9 @@ function App() {
         <View style={ColorPalette[theme]} className="flex-1">
           <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
           <SafeAreaProvider>
-            <AppNavigation />
+            <KeyboardProvider>
+              <AppNavigation />
+            </KeyboardProvider>
           </SafeAreaProvider>
         </View>
       </GestureHandlerRootView>
