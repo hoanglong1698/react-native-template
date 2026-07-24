@@ -1,24 +1,34 @@
 import './global.css';
+import React, { useEffect } from 'react';
 import { StatusBar, View } from 'react-native';
 import { AppNavigation } from '@/navigation';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { useAppPreferences } from '@/stores';
+import { useAppPreferences, useAuthStore } from '@/stores';
 import { ColorPalette, ThemesVariant } from '@/constants';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/services';
 
 function App() {
   const theme = useAppPreferences(state => state.theme);
+  const initializeAuth = useAuthStore(state => state.initializeAuth);
   const isDark = theme === ThemesVariant.DARK;
 
+  useEffect(() => {
+    initializeAuth();
+  }, [initializeAuth]);
+
   return (
-    <GestureHandlerRootView className="flex-1">
-      <View style={ColorPalette[theme]} className="flex-1">
-        <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
-        <SafeAreaProvider>
-          <AppNavigation />
-        </SafeAreaProvider>
-      </View>
-    </GestureHandlerRootView>
+    <QueryClientProvider client={queryClient}>
+      <GestureHandlerRootView className="flex-1">
+        <View style={ColorPalette[theme]} className="flex-1">
+          <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
+          <SafeAreaProvider>
+            <AppNavigation />
+          </SafeAreaProvider>
+        </View>
+      </GestureHandlerRootView>
+    </QueryClientProvider>
   );
 }
 
