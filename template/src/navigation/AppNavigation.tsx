@@ -1,14 +1,13 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import BootSplash from 'react-native-bootsplash';
 import { LoginScreen } from '@/screens';
 import { NavStackParams, ScreenName } from './AppNavigation.types';
 import BottomTabNavigator from './bottom-tab/BottomTabNavigator';
+import { navigationRef } from './navigation-ref';
 
-export const navigationRef = React.createRef<NavigationContainerRef<NavStackParams>>();
-
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<NavStackParams>();
 
 const AppNavigation = () => {
   const onReady = () => {

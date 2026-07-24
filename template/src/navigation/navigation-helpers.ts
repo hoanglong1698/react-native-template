@@ -1,5 +1,5 @@
 import { CommonActions, StackActions } from '@react-navigation/native';
-import { navigationRef } from './AppNavigation';
+import { navigationRef } from './navigation-ref';
 import { NavStackParams } from './AppNavigation.types';
 
 // Navigate to a route

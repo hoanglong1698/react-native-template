@@ -1,14 +1,14 @@
 import './global.css';
 import React, { useEffect } from 'react';
 import { StatusBar, View } from 'react-native';
-import { AppNavigation } from '@/navigation';
+import AppNavigation from './src/navigation/AppNavigation';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { useAppPreferences, useAuthStore } from '@/stores';
-import { ColorPalette, ThemesVariant } from '@/constants';
+import { useAppPreferences, useAuthStore } from './src/stores';
+import { ColorPalette, ThemesVariant } from './src/constants';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '@/services';
+import { queryClient } from './src/services/query-client';
 
 function App() {
   const theme = useAppPreferences(state => state.theme);
