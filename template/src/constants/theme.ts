@@ -16,7 +16,7 @@ export const LightColors = {
   secondary: '#8A8AA8',
   background: '#F9F9FB',
   outstand: '#2288dd',
-  textColor: '#3D435C',
+  textDefault: '#3D435C',
 };
 
 export const DarkColors = {
@@ -25,7 +25,7 @@ export const DarkColors = {
   secondary: '#A5A5C0',
   background: '#2A2A45',
   outstand: '#552288',
-  textColor: '#FFFFFF',
+  textDefault: '#FFFFFF',
 };
 
 export const ColorPalette = {
@@ -34,14 +34,14 @@ export const ColorPalette = {
     '--color-secondary': LightColors.secondary,
     '--color-outstand': LightColors.outstand,
     '--color-background': LightColors.background,
-    '--color-text': LightColors.textColor,
+    '--color-textDefault': LightColors.textDefault,
   }),
   dark: vars({
     '--color-primary': DarkColors.primary,
     '--color-secondary': DarkColors.secondary,
     '--color-outstand': DarkColors.outstand,
     '--color-background': DarkColors.background,
-    '--color-text': DarkColors.textColor,
+    '--color-textDefault': DarkColors.textDefault,
   }),
 };
 

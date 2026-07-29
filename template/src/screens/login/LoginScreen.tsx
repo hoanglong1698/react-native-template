@@ -42,22 +42,13 @@ const LoginScreen = () => {
         />
       </View>
 
-      {isError && (
-        <Text style={styles.errorText}>
-          {error?.message || 'Login failed. Please try again.'}
-        </Text>
-      )}
+      {isError && <Text style={styles.errorText}>{error?.message || 'Login failed. Please try again.'}</Text>}
 
       <TouchableOpacity
         style={[styles.button, isPending && styles.buttonDisabled]}
         onPress={onLogin}
-        disabled={isPending}
-      >
-        {isPending ? (
-          <ActivityIndicator color="#FFFFFF" />
-        ) : (
-          <Text style={styles.buttonText}>Login</Text>
-        )}
+        disabled={isPending}>
+        {isPending ? <ActivityIndicator color="#FFFFFF" /> : <Text style={styles.buttonText}>Login</Text>}
       </TouchableOpacity>
     </View>
   );
@@ -76,7 +67,7 @@ const createStyles = (colors: ColorsType) => {
     title: {
       fontSize: 24,
       fontWeight: 'bold',
-      color: colors.textColor,
+      color: colors.textDefault,
       marginBottom: 32,
       textAlign: 'center',
     },
@@ -85,7 +76,7 @@ const createStyles = (colors: ColorsType) => {
     },
     label: {
       fontSize: 14,
-      color: colors.textColor,
+      color: colors.textDefault,
       marginBottom: 8,
     },
     input: {
@@ -95,7 +86,7 @@ const createStyles = (colors: ColorsType) => {
       paddingHorizontal: 16,
       paddingVertical: 12,
       fontSize: 16,
-      color: colors.textColor,
+      color: colors.textDefault,
       backgroundColor: colors.background,
     },
     button: {

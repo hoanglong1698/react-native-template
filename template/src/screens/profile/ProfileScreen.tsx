@@ -19,8 +19,7 @@ const ProfileScreen = () => {
   };
 
   const toggleLanguage = () => {
-    const nextLang =
-      language === LanguageVariant.EN ? LanguageVariant.VI : LanguageVariant.EN;
+    const nextLang = language === LanguageVariant.EN ? LanguageVariant.VI : LanguageVariant.EN;
     setLanguage(nextLang);
   };
 
@@ -44,9 +43,7 @@ const ProfileScreen = () => {
           <Text style={styles.settingLabel}>{t('common.changeLanguage')}</Text>
           <TouchableOpacity style={styles.langButton} onPress={toggleLanguage}>
             <Text style={styles.langButtonText}>
-              {language === LanguageVariant.EN
-                ? t('common.english')
-                : t('common.vietnamese')}
+              {language === LanguageVariant.EN ? t('common.english') : t('common.vietnamese')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -69,7 +66,7 @@ const createStyles = (colors: ColorsType) => {
     title: {
       fontSize: 24,
       fontWeight: 'bold',
-      color: colors.textColor,
+      color: colors.textDefault,
       marginBottom: 30,
     },
     settingRow: {
@@ -84,7 +81,7 @@ const createStyles = (colors: ColorsType) => {
     },
     settingLabel: {
       fontSize: 16,
-      color: colors.textColor,
+      color: colors.textDefault,
       fontWeight: '500',
     },
     langButton: {

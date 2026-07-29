@@ -38,7 +38,7 @@ const createStyles = (colors: ColorsType) => {
     title: {
       fontSize: 24,
       fontWeight: 'bold',
-      color: colors.textColor,
+      color: colors.textDefault,
     },
   });
 };
