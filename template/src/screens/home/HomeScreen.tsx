@@ -48,7 +48,7 @@ const HomeScreen = () => {
 
         <Text className="font-inter-medium text-16 text-textDefault">Medium text</Text>
         <Text className="font-inter-semibold text-16 text-textDefault">SemiBold text</Text>
-        <Text className="font-inter-italic text-16 text-textDefault italic">Italic text</Text>
+        <Text className="font-inter-italic text-16 italic text-textDefault">Italic text</Text>
         <Text
           style={{
             fontFamily: 'Inter-Italic',
@@ -59,7 +59,7 @@ const HomeScreen = () => {
           Italic text
         </Text>
 
-        <Text className="text-textDefault text-16 font-inter-bold" numberOfLines={1}>
+        <Text className="font-inter-bold text-16 text-textDefault" numberOfLines={1}>
           Token: {accessToken ? `${accessToken.substring(0, 25)}...` : 'None'}
         </Text>
 
@@ -99,8 +99,8 @@ const HomeScreen = () => {
           contentContainerStyle={{ padding: 16 }}
           renderItem={({ item }) => (
             <View className="bg-card border-border mb-3 rounded-lg border p-3">
-              <Text className="text-textDefault mb-1 text-sm font-semibold">{item.title}</Text>
-              <Text className="text-textDefault text-xs opacity-70">{item.body}</Text>
+              <Text className="mb-1 text-sm font-semibold text-textDefault">{item.title}</Text>
+              <Text className="text-xs text-textDefault opacity-70">{item.body}</Text>
             </View>
           )}
         />

@@ -6,7 +6,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useAppPreferences, useAuthStore } from './src/stores';
-import { ColorPalette, ThemesVariant } from './src/constants';
+import { ColorVars, ThemesVariant, TypographyVars } from './src/constants';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './src/services/query-client';
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView className="flex-1">
-        <View style={ColorPalette[theme]} className="flex-1">
+        <View style={[ColorVars[theme], TypographyVars]} className="flex-1">
           <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
           <SafeAreaProvider>
             <KeyboardProvider>

@@ -3,3 +3,4 @@ export * from './storage';
 export * from './theme';
 export * from './language';
 export * from './typography';
+export * from './nativewind';

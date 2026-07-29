@@ -1,7 +1,8 @@
 import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { ColorsType } from '@/constants';
+import { ColorsType, Typography } from '@/constants';
 import { useLogin, useThemedStyles } from '@/hooks';
+import { scaleFont } from '@/utils';
 
 const LoginScreen = () => {
   const styles = useThemedStyles(createStyles);
@@ -65,8 +66,8 @@ const createStyles = (colors: ColorsType) => {
       backgroundColor: colors.background,
     },
     title: {
-      fontSize: 24,
-      fontWeight: 'bold',
+      ...Typography.fs24,
+      ...Typography.fw700,
       color: colors.textDefault,
       marginBottom: 32,
       textAlign: 'center',
@@ -75,7 +76,7 @@ const createStyles = (colors: ColorsType) => {
       marginBottom: 16,
     },
     label: {
-      fontSize: 14,
+      ...StyleSheet.flatten([Typography.fs14]),
       color: colors.textDefault,
       marginBottom: 8,
     },
@@ -85,7 +86,7 @@ const createStyles = (colors: ColorsType) => {
       borderRadius: 8,
       paddingHorizontal: 16,
       paddingVertical: 12,
-      fontSize: 16,
+      ...StyleSheet.flatten([Typography.fs16]),
       color: colors.textDefault,
       backgroundColor: colors.background,
     },

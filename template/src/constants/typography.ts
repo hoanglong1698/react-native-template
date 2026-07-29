@@ -1,3 +1,5 @@
+import { scaleFont } from '@/utils';
+
 const FONT_NAME = 'Inter';
 
 export const FONTS = {
@@ -13,51 +15,54 @@ export const FONTS = {
 
 export const Typography = {
   fs8: {
-    fontSize: 8,
-    lineHeight: 10,
+    fontSize: scaleFont(8),
+    lineHeight: scaleFont(10),
   },
   fs9: {
-    fontSize: 9,
-    lineHeight: 12,
+    fontSize: scaleFont(9),
+    lineHeight: scaleFont(12),
   },
   fs10: {
-    fontSize: 10,
-    lineHeight: 14,
+    fontSize: scaleFont(10),
+    lineHeight: scaleFont(14),
   },
   fs12: {
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: scaleFont(12),
+    lineHeight: scaleFont(16),
   },
   fs14: {
-    fontSize: 14,
-    lineHeight: 18,
+    fontSize: scaleFont(14),
+    lineHeight: scaleFont(18),
   },
   fs16: {
-    fontSize: 16,
-    lineHeight: 20,
+    fontSize: scaleFont(16),
+    lineHeight: scaleFont(20),
   },
   fs18: {
-    fontSize: 18,
-    lineHeight: 22,
+    fontSize: scaleFont(18),
+    lineHeight: scaleFont(22),
   },
   fs20: {
-    fontSize: 20,
-    lineHeight: 24,
+    fontSize: scaleFont(20),
+    lineHeight: scaleFont(24),
   },
   fs24: {
-    fontSize: 24,
-    lineHeight: 32,
+    fontSize: scaleFont(24),
+    lineHeight: scaleFont(32),
   },
   fs32: {
-    fontSize: 32,
-    lineHeight: 40,
+    fontSize: scaleFont(32),
+    lineHeight: scaleFont(40),
   },
   fs40: {
-    fontSize: 40,
-    lineHeight: 50,
+    fontSize: scaleFont(40),
+    lineHeight: scaleFont(50),
   },
   fw300: {
     fontFamily: FONTS.LIGHT,
+  },
+  regular: {
+    fontFamily: FONTS.REGULAR,
   },
   fw400: {
     fontFamily: FONTS.REGULAR,
