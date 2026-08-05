@@ -1,4 +1,5 @@
 import { vars } from 'nativewind';
+import { scale } from '@/utils';
 import { ColorsType, DarkColors, LightColors } from './theme';
 import { Typography } from './typography';
 
@@ -37,3 +38,19 @@ const createTypographyVars = () => {
 };
 
 export const TypographyVars = createTypographyVars();
+
+const NUMERIC_SIZES = Array.from({ length: 51 }, (_, i) => i);
+
+const createSizeVars = () => {
+  const varsObj = NUMERIC_SIZES.reduce(
+    (acc, size) => {
+      acc[`--size-${size}`] = `${scale(size)}px`;
+      return acc;
+    },
+    {} as Record<string, string>,
+  );
+
+  return vars(varsObj);
+};
+
+export const SizeVars = createSizeVars();

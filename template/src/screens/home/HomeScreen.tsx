@@ -1,9 +1,10 @@
 import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { Header } from '@/components/common';
+import { Header, UIText } from '@/components/common';
 import { useTranslation } from '@/i18n';
 import { useLogout, useMutationAddPost, useQueryPosts, useTheme } from '@/hooks';
 import { useAuthStore } from '@/stores';
+import { scaleFont } from '@/utils';
 
 const HomeScreen = () => {
   const { t } = useTranslation();
@@ -22,33 +23,33 @@ const HomeScreen = () => {
   };
 
   return (
-    <View className="flex-1 bg-background">
+    <View className="bg-background flex-1">
       <Header title={t('home.title')} />
 
-      <View className="border-border bg-card border-b p-4">
-        <Text className="font-inter text-16 text-textDefault">Regular text</Text>
+      <View className="border-b p-4">
+        <Text className="font-regular text-16 text-textDefault">Regular text</Text>
         <Text
           style={{
             fontFamily: 'Inter-Regular',
-            fontSize: 16,
+            fontSize: scaleFont(16),
             color: colors.textDefault,
           }}>
           Regular text
         </Text>
 
-        <Text className="font-inter-bold text-16 text-textDefault">Bold text</Text>
+        <Text className="font-bold text-16 text-textDefault">Bold text</Text>
         <Text
           style={{
             fontFamily: 'Inter-Bold',
-            fontSize: 16,
+            fontSize: scaleFont(16),
             color: colors.textDefault,
           }}>
           Bold text
         </Text>
 
-        <Text className="font-inter-medium text-16 text-textDefault">Medium text</Text>
-        <Text className="font-inter-semibold text-16 text-textDefault">SemiBold text</Text>
-        <Text className="font-inter-italic text-16 italic text-textDefault">Italic text</Text>
+        <Text className="font-medium text-16 text-textDefault">Medium text</Text>
+        <Text className="font-semibold text-16 text-textDefault">SemiBold text</Text>
+        <Text className="font-italic text-16 text-textDefault italic">Italic text</Text>
         <Text
           style={{
             fontFamily: 'Inter-Italic',
@@ -59,7 +60,7 @@ const HomeScreen = () => {
           Italic text
         </Text>
 
-        <Text className="font-inter-bold text-16 text-textDefault" numberOfLines={1}>
+        <Text className="font-bold text-16 text-textDefault" numberOfLines={1}>
           Token: {accessToken ? `${accessToken.substring(0, 25)}...` : 'None'}
         </Text>
 
@@ -67,16 +68,16 @@ const HomeScreen = () => {
           <TouchableOpacity
             onPress={handleAddPost}
             disabled={isAdding}
-            className="flex-1 items-center rounded bg-blue-500 p-2">
+            className="bg-primary flex-1 items-center rounded p-2">
             {isAdding ? (
               <ActivityIndicator color="#fff" size="small" />
             ) : (
-              <Text className="text-xs font-semibold text-white">Add Demo Post</Text>
+              <Text className="font-semibold text-14 text-white">Add Demo Post</Text>
             )}
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={logout} className="flex-1 items-center rounded bg-red-500 p-2">
-            <Text className="text-xs font-semibold text-white">Logout</Text>
+          <TouchableOpacity onPress={logout} className="bg-red flex-1 items-center rounded p-2">
+            <Text className="font-semibold text-14 text-white">Logout</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -87,8 +88,8 @@ const HomeScreen = () => {
         </View>
       ) : isError ? (
         <View className="flex-1 items-center justify-center p-4">
-          <Text className="mb-2 text-red-500">Failed to load posts.</Text>
-          <TouchableOpacity onPress={() => refetch()} className="bg-card border-border rounded border p-2">
+          <Text className="mb-2">Failed to load posts.</Text>
+          <TouchableOpacity onPress={() => refetch()} className="rounded border p-2">
             <Text className="text-textDefault">Retry</Text>
           </TouchableOpacity>
         </View>
@@ -98,11 +99,12 @@ const HomeScreen = () => {
           keyExtractor={item => item.id.toString()}
           contentContainerStyle={{ padding: 16 }}
           renderItem={({ item }) => (
-            <View className="bg-card border-border mb-3 rounded-lg border p-3">
-              <Text className="mb-1 text-sm font-semibold text-textDefault">{item.title}</Text>
-              <Text className="text-xs text-textDefault opacity-70">{item.body}</Text>
+            <View>
+              <UIText className="font-semibold text-14 text-textDefault mb-1">{item.title}</UIText>
+              <UIText className="text-textDefault text-12 opacity-70">{item.body}</UIText>
             </View>
           )}
+          ItemSeparatorComponent={<View className="bg-borderDefault my-10 h-1" />}
         />
       )}
     </View>

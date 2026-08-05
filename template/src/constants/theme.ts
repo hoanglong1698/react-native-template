@@ -6,6 +6,9 @@ export enum ThemesVariant {
 export const CommonColors = {
   buttercup: '#F0B90B',
   carouselPink: '#FAE4E8',
+  white: '#FFFFFF',
+  black: '#000000',
+  red: '#ff0000',
 };
 
 export const LightColors = {
@@ -14,7 +17,8 @@ export const LightColors = {
   secondary: '#8A8AA8',
   background: '#F9F9FB',
   outstand: '#2288dd',
-  textDefault: '#3D435C',
+  textDefault: '#20303C',
+  borderDefault: '#E8ECF0',
 };
 
 export const DarkColors = {
@@ -24,6 +28,7 @@ export const DarkColors = {
   background: '#2A2A45',
   outstand: '#552288',
   textDefault: '#FFFFFF',
+  borderDefault: '#E8ECF0',
 };
 
 export type ColorsType = typeof LightColors;

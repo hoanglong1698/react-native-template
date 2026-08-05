@@ -61,9 +61,6 @@ export const Typography = {
   fw300: {
     fontFamily: FONTS.LIGHT,
   },
-  regular: {
-    fontFamily: FONTS.REGULAR,
-  },
   fw400: {
     fontFamily: FONTS.REGULAR,
   },
@@ -78,6 +75,25 @@ export const Typography = {
     fontFamily: FONTS.SEMI_BOLD,
   },
   fw700: {
+    fontFamily: FONTS.BOLD,
+  },
+  light: {
+    fontFamily: FONTS.LIGHT,
+  },
+  regular: {
+    fontFamily: FONTS.REGULAR,
+  },
+  regularItalic: {
+    fontFamily: FONTS.REGULAR_ITALIC,
+    fontStyle: 'italic',
+  },
+  medium: {
+    fontFamily: FONTS.MEDIUM,
+  },
+  semibold: {
+    fontFamily: FONTS.SEMI_BOLD,
+  },
+  bold: {
     fontFamily: FONTS.BOLD,
   },
 };

@@ -7,7 +7,17 @@
  *   ...
  * }
  */
-const COLOR_KEYS = ['primary', 'secondary', 'outstand', 'background', 'textDefault'];
+const COLOR_KEYS = [
+  'white',
+  'black',
+  'red',
+  'primary',
+  'secondary',
+  'outstand',
+  'background',
+  'textDefault',
+  'borderDefault',
+];
 
 const colorsConfig = COLOR_KEYS.reduce((acc, key) => {
   acc[key] = `var(--color-${key})`;
@@ -18,19 +28,18 @@ const colorsConfig = COLOR_KEYS.reduce((acc, key) => {
  * 2. Font Family Config (Synchronized with FONTS in src/constants/typography.ts)
  * Output example:
  * {
- *   inter: ['Inter-Regular'],
- *   'inter-bold': ['Inter-Bold'],
+ *   regular: ['Inter-Regular'],
+ *   bold: ['Inter-Bold'],
  *   ...
  * }
  */
 const FONT_NAME = 'Inter';
-const FONT_NAME_LOWERCASE = FONT_NAME.toLowerCase();
 const FONT_MAP = {
-  [FONT_NAME_LOWERCASE]: `${FONT_NAME}-Regular`,
-  [`${FONT_NAME_LOWERCASE}-medium`]: `${FONT_NAME}-Medium`,
-  [`${FONT_NAME_LOWERCASE}-semibold`]: `${FONT_NAME}-SemiBold`,
-  [`${FONT_NAME_LOWERCASE}-bold`]: `${FONT_NAME}-Bold`,
-  [`${FONT_NAME_LOWERCASE}-italic`]: `${FONT_NAME}-Italic`,
+  regular: `${FONT_NAME}-Regular`,
+  medium: `${FONT_NAME}-Medium`,
+  semibold: `${FONT_NAME}-SemiBold`,
+  bold: `${FONT_NAME}-Bold`,
+  italic: `${FONT_NAME}-Italic`,
 };
 
 const fontFamilyConfig = Object.entries(FONT_MAP).reduce((acc, [key, fontFile]) => {
@@ -54,16 +63,36 @@ const fontSizeConfig = FONT_SIZES.reduce((acc, size) => {
   return acc;
 }, {});
 
+/*
+ * 4. Size Config (Spacing, Border Radius, etc.)
+ * Output example:
+ * {
+ *   0: 'var(--size-0)',
+ *   4: 'var(--size-4)',
+ *   16: 'var(--size-16)',
+ *   ...
+ * }
+ */
+const NUMERIC_SIZES = Array.from({ length: 51 }, (_, i) => i);
+
+const sizeConfig = NUMERIC_SIZES.reduce((acc, size) => {
+  acc[size] = `var(--size-${size})`;
+  return acc;
+}, {});
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./App.tsx', './src/**/*.{js,ts,jsx,tsx}'],
   presets: [require('nativewind/preset')],
+  corePlugins: {
+    fontWeight: false,
+  },
   theme: {
-    extend: {
-      colors: colorsConfig,
-      fontFamily: fontFamilyConfig,
-      fontSize: fontSizeConfig,
-    },
+    colors: colorsConfig,
+    fontFamily: fontFamilyConfig,
+    fontSize: fontSizeConfig,
+    spacing: sizeConfig,
+    borderRadius: { ...sizeConfig, DEFAULT: '4px' },
   },
   plugins: [],
 };
