@@ -4,7 +4,7 @@ import { Header, UIText } from '@/components/common';
 import { useTranslation } from '@/i18n';
 import { useLogout, useMutationAddPost, useQueryPosts, useTheme } from '@/hooks';
 import { useAuthStore } from '@/stores';
-import { scaleFont } from '@/utils';
+import { scaleFont } from '@/helpers';
 
 const HomeScreen = () => {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <View className="bg-background flex-1">
+    <View className="flex-1 bg-background">
       <Header title={t('home.title')} />
 
       <View className="border-b p-4">
@@ -49,7 +49,7 @@ const HomeScreen = () => {
 
         <Text className="font-medium text-16 text-textDefault">Medium text</Text>
         <Text className="font-semibold text-16 text-textDefault">SemiBold text</Text>
-        <Text className="font-italic text-16 text-textDefault italic">Italic text</Text>
+        <Text className="font-italic text-16 italic text-textDefault">Italic text</Text>
         <Text
           style={{
             fontFamily: 'Inter-Italic',
@@ -68,7 +68,7 @@ const HomeScreen = () => {
           <TouchableOpacity
             onPress={handleAddPost}
             disabled={isAdding}
-            className="bg-primary flex-1 items-center rounded p-2">
+            className="flex-1 items-center rounded bg-primary p-2">
             {isAdding ? (
               <ActivityIndicator color="#fff" size="small" />
             ) : (
@@ -76,7 +76,7 @@ const HomeScreen = () => {
             )}
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={logout} className="bg-red flex-1 items-center rounded p-2">
+          <TouchableOpacity onPress={logout} className="flex-1 items-center rounded bg-red p-2">
             <Text className="font-semibold text-14 text-white">Logout</Text>
           </TouchableOpacity>
         </View>
@@ -100,11 +100,11 @@ const HomeScreen = () => {
           contentContainerStyle={{ padding: 16 }}
           renderItem={({ item }) => (
             <View>
-              <UIText className="font-semibold text-14 text-textDefault mb-1">{item.title}</UIText>
-              <UIText className="text-textDefault text-12 opacity-70">{item.body}</UIText>
+              <UIText className="mb-1 font-semibold text-14 text-textDefault">{item.title}</UIText>
+              <UIText className="text-12 text-textDefault opacity-70">{item.body}</UIText>
             </View>
           )}
-          ItemSeparatorComponent={<View className="bg-borderDefault my-10 h-1" />}
+          ItemSeparatorComponent={<View className="my-10 h-1 bg-borderDefault" />}
         />
       )}
     </View>

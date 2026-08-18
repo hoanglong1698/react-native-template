@@ -1,4 +1,4 @@
-import { scaleFont } from '@/utils';
+import { scaleFont } from '@/helpers';
 
 const FONT_NAME = 'Inter';
 

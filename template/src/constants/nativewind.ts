@@ -1,5 +1,5 @@
 import { vars } from 'nativewind';
-import { scale } from '@/utils';
+import { scale } from '@/helpers';
 import { ColorsType, DarkColors, LightColors } from './theme';
 import { Typography } from './typography';
 
