@@ -1,10 +1,10 @@
-import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
+import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { Header, UIText } from '@/components/common';
-import { useTranslation } from '@/i18n';
-import { useLogout, useMutationAddPost, useQueryPosts, useTheme } from '@/hooks';
-import { useAuthStore } from '@/stores';
 import { scaleFont } from '@/helpers';
+import { useLogout, useMutationAddPost, useQueryPosts, useTheme } from '@/hooks';
+import { useTranslation } from '@/i18n';
+import { useAuthStore } from '@/stores';
 
 const HomeScreen = () => {
   const { t } = useTranslation();

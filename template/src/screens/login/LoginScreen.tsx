@@ -1,5 +1,5 @@
-import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
+import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { ColorsType, Typography } from '@/constants';
 import { useLogin, useThemedStyles } from '@/hooks';
 

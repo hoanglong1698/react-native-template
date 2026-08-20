@@ -1,5 +1,5 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import './axios.d';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { setupRequestInterceptor } from './request.interceptor';
 import { setupResponseInterceptor } from './response.interceptor';
 

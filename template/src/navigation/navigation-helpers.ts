@@ -1,6 +1,6 @@
 import { CommonActions, StackActions } from '@react-navigation/native';
-import { navigationRef } from './navigation-ref';
 import { NavStackParams } from './AppNavigation.types';
+import { navigationRef } from './navigation-ref';
 
 // Navigate to a route
 export function navigate<RouteName extends keyof NavStackParams>(

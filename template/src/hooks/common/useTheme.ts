@@ -1,5 +1,5 @@
-import { useAppPreferences } from '@/stores';
 import { DarkColors, LightColors, ThemesVariant } from '@/constants';
+import { useAppPreferences } from '@/stores';
 
 export const useTheme = () => {
   const theme = useAppPreferences(state => state.theme);

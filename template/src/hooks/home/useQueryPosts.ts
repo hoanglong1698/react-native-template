@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
-import { axiosAPI } from '@/services/api';
 import { ENDPOINTS, QUERY_KEYS } from '@/constants';
+import { axiosAPI } from '@/services/api';
 import { Post } from '@/types';
 
 export const getPosts = (): Promise<Post[]> => {

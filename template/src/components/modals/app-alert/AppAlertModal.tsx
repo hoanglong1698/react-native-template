@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Dimensions,
-} from 'react-native';
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ModalComponentProp } from 'react-native-modalfy';
 import { ColorsType, FONTS } from '@/constants';
 import { useThemedStyles } from '@/hooks';
@@ -34,9 +28,9 @@ const TYPE_ICONS: Record<AppAlertModalType, string> = {
   error: '✕',
 };
 
-export const AppAlertModal: React.FC<
-  ModalComponentProp<ModalStackParamsList, void, ModalName.AppAlert>
-> = ({ modal: { closeModal, getParam } }) => {
+export const AppAlertModal: React.FC<ModalComponentProp<ModalStackParamsList, void, ModalName.AppAlert>> = ({
+  modal: { closeModal, getParam },
+}) => {
   const styles = useThemedStyles(createStyles);
   const title = getParam('title');
   const description = getParam('description');
@@ -72,27 +66,18 @@ export const AppAlertModal: React.FC<
 
       {Boolean(title) && <Text style={styles.title}>{title}</Text>}
 
-      {Boolean(description) && (
-        <Text style={styles.description}>{description}</Text>
-      )}
+      {Boolean(description) && <Text style={styles.description}>{description}</Text>}
 
       <View style={styles.buttonContainer}>
         {showCancelButton && (
-          <TouchableOpacity
-            activeOpacity={0.7}
-            style={[styles.button, styles.cancelButton]}
-            onPress={handleCancel}>
+          <TouchableOpacity activeOpacity={0.7} style={[styles.button, styles.cancelButton]} onPress={handleCancel}>
             <Text style={styles.cancelButtonText}>{cancelText}</Text>
           </TouchableOpacity>
         )}
 
         <TouchableOpacity
           activeOpacity={0.7}
-          style={[
-            styles.button,
-            styles.confirmButton,
-            { backgroundColor: activeColor },
-          ]}
+          style={[styles.button, styles.confirmButton, { backgroundColor: activeColor }]}
           onPress={handleConfirm}>
           <Text style={styles.confirmButtonText}>{confirmText}</Text>
         </TouchableOpacity>

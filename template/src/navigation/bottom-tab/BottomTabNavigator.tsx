@@ -1,10 +1,10 @@
-import React from 'react';
-import { HomeScreen, ProfileScreen } from '@/screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useTheme } from '@/hooks';
+import { HomeScreen, ProfileScreen } from '@/screens';
 import { ScreenName } from '../AppNavigation.types';
 import TabBarItem from './TabBarItem';
-import { useTheme } from '@/hooks';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const BottomTab = createBottomTabNavigator();
 

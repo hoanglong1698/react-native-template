@@ -1,8 +1,8 @@
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { ENDPOINTS } from '@/constants';
+import { reset, ScreenName } from '@/navigation';
 import { axiosAPI } from '@/services/api';
 import { useAuthStore } from '@/stores/auth.store';
-import { reset, ScreenName } from '@/navigation';
-import { ENDPOINTS } from '@/constants';
 import { AuthResponse, LoginPayload } from '@/types';
 
 export const loginApi = async (payload: LoginPayload): Promise<AuthResponse> => {

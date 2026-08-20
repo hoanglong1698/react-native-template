@@ -1,6 +1,6 @@
-import { useMutation, useQueryClient, UseMutationResult } from '@tanstack/react-query';
-import { axiosAPI } from '@/services/api';
+import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query';
 import { ENDPOINTS, QUERY_KEYS } from '@/constants';
+import { axiosAPI } from '@/services/api';
 import { CreatePostPayload, Post } from '@/types';
 
 export const addPost = (payload: CreatePostPayload): Promise<Post> => {

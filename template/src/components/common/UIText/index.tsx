@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import React from 'react';
 import { Text as RNText, TextProps as RNTextProps } from 'react-native';
-import clsx from 'clsx';
 
 export interface UITextProps extends RNTextProps {
   className?: string;

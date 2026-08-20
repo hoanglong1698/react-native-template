@@ -1,7 +1,7 @@
 import { useMutation, UseMutationResult } from '@tanstack/react-query';
+import { ENDPOINTS } from '@/constants';
 import { axiosAPI } from '@/services/api';
 import { useAuthStore } from '@/stores/auth.store';
-import { ENDPOINTS } from '@/constants';
 import { RefreshTokenPayload, RefreshTokenResponse } from '@/types';
 
 export const refreshTokenApi = async (payload: RefreshTokenPayload): Promise<RefreshTokenResponse> => {

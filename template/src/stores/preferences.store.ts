@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist, StateStorage } from 'zustand/middleware';
-import { mmkvStorage } from '@/services/mmkv/mmkv.service';
 import { LanguageVariant, StorageKeys, ThemesVariant } from '@/constants';
 import i18n from '@/i18n';
+import { mmkvStorage } from '@/services/mmkv/mmkv.service';
 
 export interface AppPreferencesState {
   theme: ThemesVariant;
@@ -15,18 +15,18 @@ const zustandStorage: StateStorage = {
   setItem: (name, value) => {
     return mmkvStorage.set(name, value);
   },
-  getItem: (name) => {
+  getItem: name => {
     const value = mmkvStorage.getString(name);
     return value ?? null;
   },
-  removeItem: (name) => {
+  removeItem: name => {
     return mmkvStorage.remove(name);
   },
 };
 
 export const useAppPreferences = create<AppPreferencesState>()(
   persist(
-    (set) => ({
+    set => ({
       theme: ThemesVariant.LIGHT,
       language: LanguageVariant.EN,
       setTheme: (theme: ThemesVariant) => set({ theme }),
@@ -38,7 +38,7 @@ export const useAppPreferences = create<AppPreferencesState>()(
     {
       name: StorageKeys.APP_PREFERENCES,
       storage: createJSONStorage(() => zustandStorage),
-      onRehydrateStorage: () => (state) => {
+      onRehydrateStorage: () => state => {
         if (state?.language) {
           i18n.changeLanguage(state.language);
         }
@@ -46,4 +46,3 @@ export const useAppPreferences = create<AppPreferencesState>()(
     },
   ),
 );
-

@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, Switch, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { ColorsType, LanguageVariant, ThemesVariant } from '@/constants';
-import { useThemedStyles, useTheme } from '@/hooks';
+import { StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 import { Header } from '@/components/common';
+import { ColorsType, LanguageVariant, ThemesVariant } from '@/constants';
+import { AppAlertHelper, AppLoadingHelper } from '@/helpers';
+import { useTheme, useThemedStyles } from '@/hooks';
 import { useTranslation } from '@/i18n';
 import { useAppPreferences } from '@/stores';
-import { AppAlertHelper, AppLoadingHelper } from '@/helpers';
 
 const ProfileScreen = () => {
   const { theme, setTheme } = useTheme();

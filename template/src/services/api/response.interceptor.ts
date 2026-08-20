@@ -1,7 +1,7 @@
 import { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
-import { useAuthStore } from '@/stores/auth.store';
-import { reset, ScreenName } from '@/navigation';
 import { ENDPOINTS } from '@/constants';
+import { reset, ScreenName } from '@/navigation';
+import { useAuthStore } from '@/stores/auth.store';
 
 // Flag indicating whether a token refresh request is currently in progress
 let isRefreshing = false;

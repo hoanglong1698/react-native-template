@@ -1,2 +1,2 @@
-export * from './preferences.store';
 export * from './auth.store';
+export * from './preferences.store';

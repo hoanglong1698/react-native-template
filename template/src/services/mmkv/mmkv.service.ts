@@ -1,7 +1,7 @@
+import { createMMKV } from 'react-native-mmkv';
 import { StorageKeys } from '@/constants';
-import { createMMKV } from 'react-native-mmkv'
 
-export const mmkvStorage = createMMKV()
+export const mmkvStorage = createMMKV();
 
 class MMKVService {
   setData(key: StorageKeys, value: any) {
