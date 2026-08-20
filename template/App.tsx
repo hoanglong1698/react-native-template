@@ -5,11 +5,13 @@ import AppNavigation from './src/navigation/AppNavigation';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ModalProvider } from 'react-native-modalfy';
 import { useAppPreferences, useAuthStore } from './src/stores';
 import { ThemesVariant } from './src/constants';
 import { NativewindContainer } from './src/components';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './src/services/query-client';
+import { modalStack } from './src/navigation';
 
 function App() {
   const theme = useAppPreferences(state => state.theme);
@@ -27,7 +29,9 @@ function App() {
           <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
           <SafeAreaProvider>
             <KeyboardProvider>
-              <AppNavigation />
+              <ModalProvider stack={modalStack}>
+                <AppNavigation />
+              </ModalProvider>
             </KeyboardProvider>
           </SafeAreaProvider>
         </NativewindContainer>

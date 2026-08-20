@@ -5,6 +5,7 @@ import { useThemedStyles, useTheme } from '@/hooks';
 import { Header } from '@/components/common';
 import { useTranslation } from '@/i18n';
 import { useAppPreferences } from '@/stores';
+import { AppAlertHelper, AppLoadingHelper } from '@/helpers';
 
 const ProfileScreen = () => {
   const { theme, setTheme } = useTheme();
@@ -21,6 +22,29 @@ const ProfileScreen = () => {
   const toggleLanguage = () => {
     const nextLang = language === LanguageVariant.EN ? LanguageVariant.VI : LanguageVariant.EN;
     setLanguage(nextLang);
+  };
+
+  const handleShowLoading = () => {
+    AppLoadingHelper.show('Đang tải dữ liệu (2s)...');
+    setTimeout(() => {
+      AppLoadingHelper.hide();
+    }, 2000);
+  };
+
+  const handleShowAlert = () => {
+    AppAlertHelper.show({
+      title: 'Demo App Alert',
+      description: 'Đây là modal alert được gọi từ AppAlertHelper.',
+      type: 'info',
+      confirmText: 'Xác nhận',
+      cancelText: 'Hủy',
+      onConfirm: () => {
+        console.log('AppAlert confirmed');
+      },
+      onCancel: () => {
+        console.log('AppAlert cancelled');
+      },
+    });
   };
 
   return (
@@ -47,6 +71,16 @@ const ProfileScreen = () => {
             </Text>
           </TouchableOpacity>
         </View>
+
+        {/* Demo Loading Button */}
+        <TouchableOpacity style={styles.demoButton} onPress={handleShowLoading}>
+          <Text style={styles.demoButtonText}>Demo App Loading (2s)</Text>
+        </TouchableOpacity>
+
+        {/* Demo Alert Button */}
+        <TouchableOpacity style={[styles.demoButton, styles.demoAlertButton]} onPress={handleShowAlert}>
+          <Text style={styles.demoButtonText}>Demo App Alert</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -94,6 +128,22 @@ const createStyles = (colors: ColorsType) => {
       color: '#ffffff',
       fontWeight: '600',
       fontSize: 14,
+    },
+    demoButton: {
+      backgroundColor: colors.primary,
+      paddingVertical: 14,
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 12,
+    },
+    demoAlertButton: {
+      backgroundColor: '#2563EB',
+    },
+    demoButtonText: {
+      color: '#ffffff',
+      fontWeight: '600',
+      fontSize: 15,
     },
   });
 };

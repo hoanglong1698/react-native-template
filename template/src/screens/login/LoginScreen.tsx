@@ -2,7 +2,6 @@ import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View 
 import React, { useState } from 'react';
 import { ColorsType, Typography } from '@/constants';
 import { useLogin, useThemedStyles } from '@/hooks';
-import { scaleFont } from '@/helpers';
 
 const LoginScreen = () => {
   const styles = useThemedStyles(createStyles);
