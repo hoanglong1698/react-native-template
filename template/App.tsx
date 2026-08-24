@@ -1,4 +1,5 @@
 import './global.css';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { QueryClientProvider } from '@tanstack/react-query';
 import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
@@ -29,9 +30,11 @@ function App() {
           <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
           <SafeAreaProvider>
             <KeyboardProvider>
-              <ModalProvider stack={modalStack}>
-                <AppNavigation />
-              </ModalProvider>
+              <BottomSheetModalProvider>
+                <ModalProvider stack={modalStack}>
+                  <AppNavigation />
+                </ModalProvider>
+              </BottomSheetModalProvider>
             </KeyboardProvider>
           </SafeAreaProvider>
         </NativewindContainer>
