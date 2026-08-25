@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import React from 'react';
 import { Text as RNText, TextProps as RNTextProps } from 'react-native';
+import { cn } from '@/utils';
 
 export interface UITextProps extends RNTextProps {
   className?: string;
@@ -8,7 +8,7 @@ export interface UITextProps extends RNTextProps {
 
 const UIText: React.FC<UITextProps> = ({ className, children, ...props }) => {
   return (
-    <RNText className={clsx('font-regular text-14', className)} {...props}>
+    <RNText className={cn('font-regular text-14', className)} {...props}>
       {children}
     </RNText>
   );
