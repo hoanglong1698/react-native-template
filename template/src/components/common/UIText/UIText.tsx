@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text as RNText, TextProps as RNTextProps } from 'react-native';
-import { cn } from '@/utils';
+import { cn } from '@/helpers';
 
 export interface UITextProps extends RNTextProps {
   className?: string;
