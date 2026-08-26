@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import React from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { UITextInput } from '@/components';
 import { ColorsType, Typography } from '@/constants';
 import { useLogin, useThemedStyles } from '@/hooks';
+import { LoginFormValues, loginSchema } from './schema/login.schema';
 
 const LoginScreen = () => {
   const styles = useThemedStyles(createStyles);
-  const [username, setUsername] = useState('john_doe');
-  const [password, setPassword] = useState('123456');
-
   const { mutate: login, isPending, isError, error } = useLogin();
 
-  const onLogin = () => {
-    login({ username, password });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    mode: 'onSubmit',
+    defaultValues: {
+      username: 'john_doe',
+      password: '123456',
+    },
+  });
+
+  const onLogin = (data: LoginFormValues) => {
+    login(data);
   };
 
   return (
@@ -21,23 +34,37 @@ const LoginScreen = () => {
 
       <View style={styles.formGroup}>
         <Text style={styles.label}>Username</Text>
-        <UITextInput
-          value={username}
-          onChangeText={setUsername}
-          placeholder="Enter username"
-          placeholderTextColor="#999"
-          autoCapitalize="none"
+        <Controller
+          control={control}
+          name="username"
+          render={({ field: { onChange, value } }) => (
+            <UITextInput
+              value={value}
+              onChangeText={onChange}
+              error={errors.username?.message}
+              placeholder="Enter username"
+              placeholderTextColor="#999"
+              autoCapitalize="none"
+            />
+          )}
         />
       </View>
 
       <View style={styles.formGroup}>
         <Text style={styles.label}>Password</Text>
-        <UITextInput
-          value={password}
-          onChangeText={setPassword}
-          placeholder="Enter password"
-          placeholderTextColor="#999"
-          secureTextEntry
+        <Controller
+          control={control}
+          name="password"
+          render={({ field: { onChange, value } }) => (
+            <UITextInput
+              value={value}
+              onChangeText={onChange}
+              error={errors.password?.message}
+              placeholder="Enter password"
+              placeholderTextColor="#999"
+              secureTextEntry
+            />
+          )}
         />
       </View>
 
@@ -45,7 +72,7 @@ const LoginScreen = () => {
 
       <TouchableOpacity
         style={[styles.button, isPending && styles.buttonDisabled]}
-        onPress={onLogin}
+        onPress={handleSubmit(onLogin)}
         disabled={isPending}>
         {isPending ? <ActivityIndicator color="#FFFFFF" /> : <Text style={styles.buttonText}>Login</Text>}
       </TouchableOpacity>
