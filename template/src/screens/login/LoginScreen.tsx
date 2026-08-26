@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { UITextInput } from '@/components';
 import { ColorsType, Typography } from '@/constants';
 import { useLogin, useThemedStyles } from '@/hooks';
 
@@ -20,8 +21,7 @@ const LoginScreen = () => {
 
       <View style={styles.formGroup}>
         <Text style={styles.label}>Username</Text>
-        <TextInput
-          style={styles.input}
+        <UITextInput
           value={username}
           onChangeText={setUsername}
           placeholder="Enter username"
@@ -32,8 +32,7 @@ const LoginScreen = () => {
 
       <View style={styles.formGroup}>
         <Text style={styles.label}>Password</Text>
-        <TextInput
-          style={styles.input}
+        <UITextInput
           value={password}
           onChangeText={setPassword}
           placeholder="Enter password"
@@ -78,16 +77,6 @@ const createStyles = (colors: ColorsType) => {
       ...StyleSheet.flatten([Typography.fs14]),
       color: colors.textDefault,
       marginBottom: 8,
-    },
-    input: {
-      borderWidth: 1,
-      borderColor: colors.secondary,
-      borderRadius: 8,
-      paddingHorizontal: 16,
-      paddingVertical: 12,
-      ...StyleSheet.flatten([Typography.fs16]),
-      color: colors.textDefault,
-      backgroundColor: colors.background,
     },
     button: {
       backgroundColor: colors.primary,

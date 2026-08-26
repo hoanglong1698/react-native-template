@@ -18,7 +18,7 @@ export const LightColors = {
   background: '#F9F9FB',
   outstand: '#2288dd',
   textDefault: '#20303C',
-  borderDefault: '#E8ECF0',
+  borderDefault: '#8A8AA8',
 };
 
 export const DarkColors = {

@@ -1,16 +1,16 @@
 import { scaleFont } from '@/helpers';
 
-const FONT_NAME = 'Inter';
+const FontName = 'Inter';
 
-export const FONTS = {
+export const Fonts = {
   /* -----------Normal----------- */
-  /* 300 */ LIGHT: `${FONT_NAME}-Light`,
-  /* 400 */ REGULAR: `${FONT_NAME}-Regular`,
-  /* 500 */ MEDIUM: `${FONT_NAME}-Medium`,
-  /* 600 */ SEMI_BOLD: `${FONT_NAME}-SemiBold`,
-  /* 700 */ BOLD: `${FONT_NAME}-Bold`,
+  /* 300 */ Light: `${FontName}-Light`,
+  /* 400 */ Regular: `${FontName}-Regular`,
+  /* 500 */ Medium: `${FontName}-Medium`,
+  /* 600 */ SemiBold: `${FontName}-SemiBold`,
+  /* 700 */ Bold: `${FontName}-Bold`,
   /* -----------Italic----------- */
-  /* 400 */ REGULAR_ITALIC: `${FONT_NAME}-Italic`,
+  /* 400 */ RegularItalic: `${FontName}-Italic`,
 };
 
 export const Typography = {
@@ -59,41 +59,41 @@ export const Typography = {
     lineHeight: scaleFont(50),
   },
   fw300: {
-    fontFamily: FONTS.LIGHT,
+    fontFamily: Fonts.Light,
   },
   fw400: {
-    fontFamily: FONTS.REGULAR,
+    fontFamily: Fonts.Regular,
   },
   fw400_Italic: {
-    fontFamily: FONTS.REGULAR_ITALIC,
+    fontFamily: Fonts.RegularItalic,
     fontStyle: 'italic',
   },
   fw500: {
-    fontFamily: FONTS.MEDIUM,
+    fontFamily: Fonts.Medium,
   },
   fw600: {
-    fontFamily: FONTS.SEMI_BOLD,
+    fontFamily: Fonts.SemiBold,
   },
   fw700: {
-    fontFamily: FONTS.BOLD,
+    fontFamily: Fonts.Bold,
   },
   light: {
-    fontFamily: FONTS.LIGHT,
+    fontFamily: Fonts.Light,
   },
   regular: {
-    fontFamily: FONTS.REGULAR,
+    fontFamily: Fonts.Regular,
   },
   regularItalic: {
-    fontFamily: FONTS.REGULAR_ITALIC,
+    fontFamily: Fonts.RegularItalic,
     fontStyle: 'italic',
   },
   medium: {
-    fontFamily: FONTS.MEDIUM,
+    fontFamily: Fonts.Medium,
   },
   semibold: {
-    fontFamily: FONTS.SEMI_BOLD,
+    fontFamily: Fonts.SemiBold,
   },
   bold: {
-    fontFamily: FONTS.BOLD,
+    fontFamily: Fonts.Bold,
   },
 };

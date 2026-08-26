@@ -9,8 +9,9 @@ import React, { forwardRef, useCallback, useImperativeHandle, useRef } from 'rea
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ColorsType } from '@/constants';
+import { scale, scaleRadius } from '@/helpers';
 import { useThemedStyles } from '@/hooks';
-import UIText from '../UIText';
+import { UIText } from '../UIText';
 
 export interface AppBottomSheetModalProps extends Partial<BottomSheetModalProps> {
   children?: React.ReactNode;
@@ -94,20 +95,20 @@ const createStyles = (colors: ColorsType) => {
     },
     handleIndicator: {
       backgroundColor: colors.secondary,
-      width: 40,
-      height: 4,
-      borderRadius: 2,
+      width: scale(40),
+      height: scale(4),
+      borderRadius: scaleRadius(2),
     },
     headerContainer: {
       alignItems: 'center',
-      paddingVertical: 12,
+      paddingVertical: scale(12),
     },
     titleContainer: {
       flex: 1,
-      paddingRight: 8,
+      paddingRight: scale(8),
     },
     closeButton: {
-      padding: 4,
+      padding: scale(4),
     },
   });
 };

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ModalComponentProp } from 'react-native-modalfy';
-import { ColorsType, FONTS } from '@/constants';
+import { ColorsType, Fonts, Typography } from '@/constants';
+import { scale, scaleRadius } from '@/helpers';
 import { useThemedStyles } from '@/hooks';
 import { AppAlertModalType, ModalName, ModalStackParamsList } from '@/navigation';
 
@@ -89,57 +90,56 @@ export const AppAlertModal: React.FC<ModalComponentProp<ModalStackParamsList, vo
 const createStyles = (colors: ColorsType) => {
   return StyleSheet.create({
     card: {
-      width: Math.min(SCREEN_WIDTH - 48, 340),
+      width: Math.min(SCREEN_WIDTH - scale(48), scale(340)),
       backgroundColor: colors.background,
-      borderRadius: 16,
-      paddingHorizontal: 20,
-      paddingTop: 24,
-      paddingBottom: 20,
+      borderRadius: scaleRadius(16),
+      paddingHorizontal: scale(20),
+      paddingTop: scale(24),
+      paddingBottom: scale(20),
       alignItems: 'center',
       shadowColor: '#000',
-      shadowOffset: { width: 0, height: 10 },
+      shadowOffset: { width: 0, height: scale(10) },
       shadowOpacity: 0.15,
-      shadowRadius: 20,
+      shadowRadius: scale(20),
       elevation: 8,
     },
     iconContainer: {
-      width: 48,
-      height: 48,
-      borderRadius: 24,
+      width: scale(48),
+      height: scale(48),
+      borderRadius: scaleRadius(24),
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom: 16,
+      marginBottom: scale(16),
     },
     iconText: {
-      fontSize: 22,
-      fontFamily: FONTS.BOLD,
+      ...Typography.fs24,
+      fontFamily: Fonts.Bold,
     },
     title: {
-      fontSize: 18,
-      fontFamily: FONTS.BOLD,
+      ...Typography.fs18,
+      fontFamily: Fonts.Bold,
       color: colors.textDefault,
       textAlign: 'center',
-      marginBottom: 8,
+      marginBottom: scale(8),
     },
     description: {
-      fontSize: 14,
-      fontFamily: FONTS.REGULAR,
+      ...Typography.fs14,
+      fontFamily: Fonts.Regular,
       color: colors.textDefault,
       opacity: 0.8,
       textAlign: 'center',
-      lineHeight: 20,
-      marginBottom: 20,
+      marginBottom: scale(20),
     },
     buttonContainer: {
       flexDirection: 'row',
       width: '100%',
-      gap: 12,
-      marginTop: 4,
+      gap: scale(12),
+      marginTop: scale(4),
     },
     button: {
       flex: 1,
-      height: 44,
-      borderRadius: 10,
+      height: scale(44),
+      borderRadius: scaleRadius(10),
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -149,16 +149,16 @@ const createStyles = (colors: ColorsType) => {
       borderColor: colors.borderDefault,
     },
     cancelButtonText: {
-      fontSize: 15,
-      fontFamily: FONTS.SEMI_BOLD,
+      ...Typography.fs14,
+      fontFamily: Fonts.SemiBold,
       color: colors.textDefault,
     },
     confirmButton: {
       backgroundColor: '#2563EB',
     },
     confirmButtonText: {
-      fontSize: 15,
-      fontFamily: FONTS.SEMI_BOLD,
+      ...Typography.fs14,
+      fontFamily: Fonts.SemiBold,
       color: '#FFFFFF',
     },
   });

@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ColorsType } from '@/constants';
+import { ColorsType, Typography } from '@/constants';
+import { scale } from '@/helpers';
 import { useThemedStyles } from '@/hooks';
 
 interface Props {
@@ -31,13 +32,12 @@ const createStyles = (colors: ColorsType) => {
       backgroundColor: colors.primary,
     },
     header: {
-      height: 50,
+      height: scale(50),
       justifyContent: 'center',
       alignItems: 'center',
     },
     title: {
-      fontSize: 24,
-      fontWeight: 'bold',
+      ...Typography.fs24,
       color: colors.textDefault,
     },
   });
