@@ -1,4 +1,4 @@
-import { scaleFont } from '@/helpers';
+import { scaleFont } from './../helpers/responsive';
 
 const FontName = 'Inter';
 

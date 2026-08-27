@@ -12,7 +12,7 @@ const HomeScreen = () => {
   const { colors } = useTheme();
   const styles = useThemedStyles(createStyles);
   const { logout } = useLogout();
-  const accessToken = useAuthStore(state => state.accessToken);
+  const accessToken = useAuthStore((state) => state.accessToken);
 
   const { data: posts, isLoading, isError, refetch } = useQueryPosts();
   const { mutate: addPost, isPending: isAdding } = useMutationAddPost();
@@ -32,26 +32,53 @@ const HomeScreen = () => {
 
       <View style={styles.demoSection}>
         <Text style={styles.regularText}>Regular text</Text>
-        <Text style={styles.mediumText}>Medium text</Text>
-        <Text style={styles.semiBoldText}>SemiBold text</Text>
-        <Text style={styles.boldText}>Bold text</Text>
-        <Text style={styles.italicText}>Italic text</Text>
+        <UIText fs16 fw400>
+          Regular (fs16 fw400)
+        </UIText>
 
-        <Text style={styles.tokenText} numberOfLines={1}>
+        <Text style={styles.mediumText}>Medium text</Text>
+        <UIText fs16 fw500>
+          Medium (fs16 fw500)
+        </UIText>
+
+        <Text style={styles.semiBoldText}>SemiBold text</Text>
+        <UIText fs16 fw600>
+          SemiBold (fs16 fw600)
+        </UIText>
+
+        <Text style={styles.boldText}>Bold text</Text>
+        <UIText fs16 fw700>
+          Bold (fs16 fw700)
+        </UIText>
+
+        <Text style={styles.italicText}>Italic text</Text>
+        <UIText fs16 fw400_Italic>
+          Italic (fs16 fw400_Italic)
+        </UIText>
+
+        <UIText fs18 bold style={{ marginTop: scale(4) }}>
+          Semantic Alias (fs18 bold)
+        </UIText>
+
+        <UIText fs16 bold numberOfLines={1} style={{ marginTop: scale(4) }}>
           Token: {accessToken ? `${accessToken.substring(0, 25)}...` : 'None'}
-        </Text>
+        </UIText>
 
         <View style={styles.buttonRow}>
           <TouchableOpacity onPress={handleAddPost} disabled={isAdding} style={styles.addButton}>
             {isAdding ? (
               <ActivityIndicator color="#fff" size="small" />
             ) : (
-              <Text style={styles.buttonText}>Add Demo Post</Text>
+              <UIText fs14 fw600 style={styles.buttonText}>
+                Add Demo Post
+              </UIText>
             )}
           </TouchableOpacity>
 
           <TouchableOpacity onPress={logout} style={styles.logoutButton}>
-            <Text style={styles.buttonText}>Logout</Text>
+            <UIText fs14 fw600 style={styles.buttonText}>
+              Logout
+            </UIText>
           </TouchableOpacity>
         </View>
       </View>
@@ -62,20 +89,28 @@ const HomeScreen = () => {
         </View>
       ) : isError ? (
         <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>Failed to load posts.</Text>
+          <UIText fs14 regular style={styles.errorText}>
+            Failed to load posts.
+          </UIText>
           <TouchableOpacity onPress={() => refetch()} style={styles.retryButton}>
-            <Text style={styles.retryText}>Retry</Text>
+            <UIText fs14 regular style={styles.retryText}>
+              Retry
+            </UIText>
           </TouchableOpacity>
         </View>
       ) : (
         <FlatList
           data={posts?.slice(0, 15)}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.listContent}
           renderItem={({ item }) => (
             <View>
-              <UIText style={styles.postTitle}>{item.title}</UIText>
-              <UIText style={styles.postBody}>{item.body}</UIText>
+              <UIText fs14 fw600 style={styles.postTitle}>
+                {item.title}
+              </UIText>
+              <UIText fs12 regular style={styles.postBody}>
+                {item.body}
+              </UIText>
             </View>
           )}
           ItemSeparatorComponent={renderSeparator}
@@ -124,12 +159,6 @@ const createStyles = (colors: ColorsType) => {
       ...Typography.fs16,
       color: colors.textDefault,
     },
-    tokenText: {
-      fontFamily: Fonts.Bold,
-      ...Typography.fs16,
-      color: colors.textDefault,
-      marginTop: scale(4),
-    },
     buttonRow: {
       marginTop: scale(8),
       flexDirection: 'row',
@@ -152,8 +181,6 @@ const createStyles = (colors: ColorsType) => {
       padding: scale(8),
     },
     buttonText: {
-      fontFamily: Fonts.SemiBold,
-      ...Typography.fs14,
       color: '#FFFFFF',
     },
     centerContainer: {
@@ -168,8 +195,6 @@ const createStyles = (colors: ColorsType) => {
       padding: scale(16),
     },
     errorText: {
-      ...Typography.fs14,
-      fontFamily: Fonts.Regular,
       color: colors.textDefault,
       marginBottom: scale(8),
     },
@@ -180,8 +205,6 @@ const createStyles = (colors: ColorsType) => {
       padding: scale(8),
     },
     retryText: {
-      ...Typography.fs14,
-      fontFamily: Fonts.Regular,
       color: colors.textDefault,
     },
     listContent: {
@@ -189,13 +212,9 @@ const createStyles = (colors: ColorsType) => {
     },
     postTitle: {
       marginBottom: scale(4),
-      fontFamily: Fonts.SemiBold,
-      ...Typography.fs14,
       color: colors.textDefault,
     },
     postBody: {
-      fontFamily: Fonts.Regular,
-      ...Typography.fs12,
       color: colors.textDefault,
       opacity: 0.7,
     },
