@@ -1,4 +1,6 @@
-import { Text, useWindowDimensions, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Fonts, Typography } from '@/constants';
 
 interface Props {
   icon: string;
@@ -11,15 +13,14 @@ const TabBarItem = ({ icon, label, color, focused }: Props) => {
   const { width: widthDevice } = useWindowDimensions();
 
   return (
-    <View className="flex-1 items-center justify-center  gap-0.5" style={{ width: widthDevice / 5 }}>
+    <View style={[styles.container, { width: widthDevice / 5 }]}>
       <Text allowFontScaling={false} style={{ color }}>
         {icon}
       </Text>
       <Text
         allowFontScaling={false}
         numberOfLines={1}
-        style={{ color }}
-        className={`text-[10px] ${focused ? 'font-semibold' : 'font-normal'}`}>
+        style={[styles.label, focused && styles.labelFocused, { color }]}>
         {label}
       </Text>
     </View>
@@ -27,3 +28,19 @@ const TabBarItem = ({ icon, label, color, focused }: Props) => {
 };
 
 export default TabBarItem;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
+  },
+  label: {
+    ...Typography.fs10,
+    fontFamily: Fonts.Regular,
+  },
+  labelFocused: {
+    fontFamily: Fonts.SemiBold,
+  },
+});

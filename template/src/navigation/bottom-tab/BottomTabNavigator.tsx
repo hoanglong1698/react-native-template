@@ -8,6 +8,12 @@ import TabBarItem from './TabBarItem';
 
 const BottomTab = createBottomTabNavigator();
 
+const renderTabBarIcon =
+  (icon: string, label: string) =>
+  ({ focused, color }: { focused: boolean; color: string }) => (
+    <TabBarItem icon={icon} label={label} focused={focused} color={color} />
+  );
+
 const BottomTabNavigator = () => {
   const { colors } = useTheme();
   const insets = useSafeAreaInsets();
@@ -31,14 +37,14 @@ const BottomTabNavigator = () => {
         name={ScreenName.Home}
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ focused, color }) => <TabBarItem icon="🏠" label="Home" focused={focused} color={color} />,
+          tabBarIcon: renderTabBarIcon('🏠', 'Home'),
         }}
       />
       <BottomTab.Screen
         name={ScreenName.Profile}
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({ focused, color }) => <TabBarItem icon="👤" label="Profile" focused={focused} color={color} />,
+          tabBarIcon: renderTabBarIcon('👤', 'Profile'),
         }}
       />
     </BottomTab.Navigator>

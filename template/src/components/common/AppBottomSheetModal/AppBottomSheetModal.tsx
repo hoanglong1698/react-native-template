@@ -6,12 +6,11 @@ import {
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
 import React, { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ColorsType } from '@/constants';
+import { ColorsType, Fonts, Typography } from '@/constants';
 import { scale, scaleRadius } from '@/helpers';
 import { useThemedStyles } from '@/hooks';
-import { UIText } from '../UIText';
 
 export interface AppBottomSheetModalProps extends Partial<BottomSheetModalProps> {
   children?: React.ReactNode;
@@ -64,7 +63,7 @@ const AppBottomSheetModal = forwardRef<BottomSheetModal, AppBottomSheetModalProp
       return (
         <View style={styles.headerContainer}>
           <View style={styles.titleContainer}>
-            <UIText className="font-semibold text-16 text-textDefault">{title}</UIText>
+            <Text style={styles.title}>{title}</Text>
           </View>
         </View>
       );
@@ -106,6 +105,11 @@ const createStyles = (colors: ColorsType) => {
     titleContainer: {
       flex: 1,
       paddingRight: scale(8),
+    },
+    title: {
+      ...Typography.fs16,
+      fontFamily: Fonts.SemiBold,
+      color: colors.textDefault,
     },
     closeButton: {
       padding: scale(4),
