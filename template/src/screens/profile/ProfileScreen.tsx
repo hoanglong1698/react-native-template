@@ -1,8 +1,8 @@
 import { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 import React, { useMemo, useRef } from 'react';
 import { ScrollView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
-import { AppBottomSheetModal, BottomSheetModal, Header, UIText } from '@/components/common';
-import { ColorsType, LanguageVariant, ThemesVariant } from '@/constants';
+import { AppBottomSheetModal, BottomSheetModal, Header } from '@/components/common';
+import { ColorsType, Fonts, LanguageVariant, ThemesVariant, Typography } from '@/constants';
 import { AppAlertHelper, AppLoadingHelper } from '@/helpers';
 import { useTheme, useThemedStyles } from '@/hooks';
 import { useTranslation } from '@/i18n';
@@ -97,7 +97,7 @@ const ProfileScreen = () => {
         </TouchableOpacity>
 
         <View style={styles.divider} />
-        <UIText className="mb-2 font-bold text-16 text-textDefault">Demo BottomSheetModal</UIText>
+        <Text style={styles.sectionTitle}>Demo BottomSheetModal</Text>
 
         {/* Demo 1: Dynamic Sizing */}
         <TouchableOpacity
@@ -124,13 +124,13 @@ const ProfileScreen = () => {
       {/* 1. Modal Dynamic Sizing (Mặc định) */}
       <AppBottomSheetModal ref={dynamicSheetRef} title="1. Dynamic Sizing">
         <View style={styles.sheetContent}>
-          <UIText className="text-15 mb-3 font-semibold text-textDefault">
+          <Text style={styles.sheetTitle}>
             useBottomSheetView = true & enableDynamicSizing = true
-          </UIText>
-          <UIText className="mb-4 text-14 leading-5 text-textDefault">
+          </Text>
+          <Text style={styles.sheetDesc}>
             Modal tự động đo lường và ôm vừa khít chiều cao nội dung. Thích hợp cho form ngắn, dialog xác nhận, action
             menu.
-          </UIText>
+          </Text>
           <TouchableOpacity
             style={[styles.demoButton, { backgroundColor: colors.primary }]}
             onPress={() => dynamicSheetRef.current?.dismiss()}>
@@ -146,12 +146,12 @@ const ProfileScreen = () => {
         enableDynamicSizing={false}
         snapPoints={multiSnapPoints}>
         <View style={styles.sheetContent}>
-          <UIText className="text-15 mb-3 font-semibold text-textDefault">
+          <Text style={styles.sheetTitle}>
             enableDynamicSizing = false & snapPoints = ['25%', '50%', '90%']
-          </UIText>
-          <UIText className="mb-4 text-14 leading-5 text-textDefault">
+          </Text>
+          <Text style={styles.sheetDesc}>
             Modal dừng ở 3 nấc cố định (25%, 50%, 90% màn hình). Người dùng có thể kéo qua lại giữa các nấc.
-          </UIText>
+          </Text>
           <TouchableOpacity
             style={[styles.demoButton, { backgroundColor: '#F59E0B' }]}
             onPress={() => snapPointsSheetRef.current?.dismiss()}>
@@ -173,8 +173,8 @@ const ProfileScreen = () => {
           contentContainerStyle={styles.flatListContent}
           renderItem={({ item }) => (
             <View style={[styles.listItem, { borderBottomColor: colors.borderDefault }]}>
-              <UIText className="font-bold text-14 text-textDefault">{item.title}</UIText>
-              <UIText className="text-12 text-secondary">{item.description}</UIText>
+              <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={styles.itemDescription}>{item.description}</Text>
             </View>
           )}
         />
@@ -251,9 +251,28 @@ const createStyles = (colors: ColorsType) => {
       backgroundColor: colors.borderDefault,
       marginVertical: 20,
     },
+    sectionTitle: {
+      ...Typography.fs16,
+      fontFamily: Fonts.Bold,
+      color: colors.textDefault,
+      marginBottom: 8,
+    },
     sheetContent: {
       paddingHorizontal: 20,
       paddingTop: 16,
+    },
+    sheetTitle: {
+      ...Typography.fs16,
+      fontFamily: Fonts.SemiBold,
+      color: colors.textDefault,
+      marginBottom: 12,
+    },
+    sheetDesc: {
+      ...Typography.fs14,
+      fontFamily: Fonts.Regular,
+      color: colors.textDefault,
+      lineHeight: 20,
+      marginBottom: 16,
     },
     flatListContent: {
       paddingHorizontal: 20,
@@ -262,6 +281,17 @@ const createStyles = (colors: ColorsType) => {
     listItem: {
       paddingVertical: 12,
       borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    itemTitle: {
+      ...Typography.fs14,
+      fontFamily: Fonts.Bold,
+      color: colors.textDefault,
+      marginBottom: 2,
+    },
+    itemDescription: {
+      ...Typography.fs12,
+      fontFamily: Fonts.Regular,
+      color: colors.secondary,
     },
   });
 };

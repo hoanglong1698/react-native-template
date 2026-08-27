@@ -6,6 +6,4 @@ module.exports = {
   bracketSpacing: true,
   tabWidth: 2,
   printWidth: 120,
-  plugins: [require.resolve('prettier-plugin-tailwindcss')],
-  tailwindAttributes: ['className'],
 };

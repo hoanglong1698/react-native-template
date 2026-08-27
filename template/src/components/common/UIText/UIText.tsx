@@ -1,17 +1,27 @@
 import React from 'react';
-import { Text as RNText, TextProps as RNTextProps } from 'react-native';
-import { cn } from '@/helpers';
+import { StyleSheet, Text as RNText, TextProps as RNTextProps } from 'react-native';
+import { ColorsType, Fonts, Typography } from '@/constants';
+import { useThemedStyles } from '@/hooks';
 
-export interface UITextProps extends RNTextProps {
-  className?: string;
-}
+export interface UITextProps extends RNTextProps {}
 
-const UIText: React.FC<UITextProps> = ({ className, children, ...props }) => {
+const UIText: React.FC<UITextProps> = ({ style, children, ...props }) => {
+  const styles = useThemedStyles(createStyles);
+
   return (
-    <RNText className={cn('font-regular text-14', className)} {...props}>
+    <RNText style={[styles.text, style]} {...props}>
       {children}
     </RNText>
   );
 };
+
+const createStyles = (colors: ColorsType) =>
+  StyleSheet.create({
+    text: {
+      fontFamily: Fonts.Regular,
+      ...Typography.fs14,
+      color: colors.textDefault,
+    },
+  });
 
 export default UIText;
