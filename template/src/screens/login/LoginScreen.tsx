@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { UITextInput } from '@/components';
+import { FormField, FormScrollView, UITextInput } from '@/components';
 import { ColorsType, Typography } from '@/constants';
 import { useLogin, useThemedStyles } from '@/hooks';
 import { LoginFormValues, loginSchema } from './schema/login.schema';
@@ -11,11 +11,7 @@ const LoginScreen = () => {
   const styles = useThemedStyles(createStyles);
   const { mutate: login, isPending, isError, error } = useLogin();
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormValues>({
+  const { control, handleSubmit, formState } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     mode: 'onSubmit',
     defaultValues: {
@@ -24,49 +20,55 @@ const LoginScreen = () => {
     },
   });
 
+  const { errors } = formState;
+
   const onLogin = (data: LoginFormValues) => {
     login(data);
   };
 
   return (
-    <View style={styles.container}>
+    <FormScrollView formState={formState} contentContainerStyle={styles.container}>
       <Text style={styles.title}>Welcome Back</Text>
 
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>Username</Text>
-        <Controller
-          control={control}
-          name="username"
-          render={({ field: { onChange, value } }) => (
-            <UITextInput
-              value={value}
-              onChangeText={onChange}
-              error={errors.username?.message}
-              placeholder="Enter username"
-              placeholderTextColor="#999"
-              autoCapitalize="none"
-            />
-          )}
-        />
-      </View>
+      <FormField name="username">
+        <View style={styles.formGroup}>
+          <Text style={styles.label}>Username</Text>
+          <Controller
+            control={control}
+            name="username"
+            render={({ field: { onChange, value } }) => (
+              <UITextInput
+                value={value}
+                onChangeText={onChange}
+                error={errors.username?.message}
+                placeholder="Enter username"
+                placeholderTextColor="#999"
+                autoCapitalize="none"
+              />
+            )}
+          />
+        </View>
+      </FormField>
 
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>Password</Text>
-        <Controller
-          control={control}
-          name="password"
-          render={({ field: { onChange, value } }) => (
-            <UITextInput
-              value={value}
-              onChangeText={onChange}
-              error={errors.password?.message}
-              placeholder="Enter password"
-              placeholderTextColor="#999"
-              secureTextEntry
-            />
-          )}
-        />
-      </View>
+      <FormField name="password">
+        <View style={styles.formGroup}>
+          <Text style={styles.label}>Password</Text>
+          <Controller
+            control={control}
+            name="password"
+            render={({ field: { onChange, value } }) => (
+              <UITextInput
+                value={value}
+                onChangeText={onChange}
+                error={errors.password?.message}
+                placeholder="Enter password"
+                placeholderTextColor="#999"
+                secureTextEntry
+              />
+            )}
+          />
+        </View>
+      </FormField>
 
       {isError && <Text style={styles.errorText}>{error?.message || 'Login failed. Please try again.'}</Text>}
 
@@ -76,7 +78,7 @@ const LoginScreen = () => {
         disabled={isPending}>
         {isPending ? <ActivityIndicator color="#FFFFFF" /> : <Text style={styles.buttonText}>Login</Text>}
       </TouchableOpacity>
-    </View>
+    </FormScrollView>
   );
 };
 
